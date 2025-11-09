@@ -1,18 +1,14 @@
-// src/context/BudgetContext.js
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { fetchData, updateData } from "../api/jsonBinAPI";
 
-// Create Context
 const BudgetContext = createContext();
 
-// Provider
 export const BudgetProvider = ({ children }) => {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem("bb_user")) || null);
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // 🔄 Load transactions from JSONBin for the logged-in user
   useEffect(() => {
     const loadData = async () => {
       if (!user) return;
@@ -31,7 +27,6 @@ export const BudgetProvider = ({ children }) => {
     loadData();
   }, [user]);
 
-  // 💾 Sync updated transactions to JSONBin
   const syncTransactions = async (newTransactions) => {
     if (!user) return;
     setTransactions(newTransactions);
@@ -47,19 +42,16 @@ export const BudgetProvider = ({ children }) => {
     }
   };
 
-  // ➕ Add a new transaction
   const addTransaction = (t) => {
     const newList = [{ id: Date.now(), ...t }, ...transactions];
     syncTransactions(newList);
   };
 
-  // ❌ Delete a transaction
   const deleteTransaction = (id) => {
     const newList = transactions.filter((t) => t.id !== id);
     syncTransactions(newList);
   };
 
-  // 🚪 Logout function
   const logout = () => {
     localStorage.removeItem("bb_user");
     setUser(null);
@@ -80,5 +72,5 @@ export const BudgetProvider = ({ children }) => {
   return <BudgetContext.Provider value={value}>{children}</BudgetContext.Provider>;
 };
 
-// Custom hook to use context
 export const useBudget = () => useContext(BudgetContext);
+
