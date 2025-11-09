@@ -2,13 +2,11 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
-// 🧩 Context
+
 import { BudgetProvider } from "./context/BudgetContext";
 
-// 🔐 Protected Routes
 import ProtectedRoute from "./components/ProtectedRoute";
 
-// 🧭 Pages
 import DashboardPage from "./pages/DashboardPage";
 import TransactionsPage from "./pages/TransactionsPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
@@ -21,14 +19,10 @@ function App() {
     <BudgetProvider>
       <Router>
         <Routes>
-          {/* 🏠 Default Route */}
-          {/* <Route path="/" element={<Navigate to="/login" />} /> */}
 
-          {/* 🔑 Auth Pages */}
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
 
-          {/* 💰 Protected Routes */}
           <Route
             path="/app"
             element={
