@@ -9,10 +9,8 @@ import {
 } from "recharts";
 
 export default function PieChartComponent({ transactions }) {
-  // 🎨 Colors: Income = green, Expense = red, Balance = indigo
   const COLORS = ["#10B981", "#EF4444", "#6366F1"];
 
-  // 🧮 Compute totals
   const income = useMemo(
     () =>
       transactions
@@ -31,7 +29,6 @@ export default function PieChartComponent({ transactions }) {
 
   const balance = income - expense;
 
-  // 🧾 Prepare chart data
   const data = useMemo(() => {
     return [
       { name: "Income", value: income },
@@ -40,7 +37,6 @@ export default function PieChartComponent({ transactions }) {
     ];
   }, [income, expense, balance]);
 
-  // 🧍 If no financial data
   if (income === 0 && expense === 0 && balance === 0) {
     return (
       <div className="text-gray-500 text-center py-8">
@@ -69,7 +65,6 @@ export default function PieChartComponent({ transactions }) {
             ))}
           </Pie>
 
-          {/* Tooltip and Legend */}
           <Tooltip
             formatter={(value, name) => [`₹${value}`, name]}
             contentStyle={{
@@ -82,7 +77,6 @@ export default function PieChartComponent({ transactions }) {
         </PieChart>
       </ResponsiveContainer>
 
-      {/* 💰 Summary */}
       <div className="mt-4 text-center text-sm text-gray-700 space-y-1">
         <p>
           <span className="font-semibold text-green-600">Income:</span> ₹{income}
@@ -97,3 +91,4 @@ export default function PieChartComponent({ transactions }) {
     </div>
   );
 }
+
