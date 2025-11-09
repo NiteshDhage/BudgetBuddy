@@ -39,11 +39,9 @@ export default function Navbar({ title = "BudgetBuddy", rightAction }) {
           ))}
         </div>
 
-        {/* Right-side Action (e.g. Logout Button) */}
         <div className="flex items-center space-x-4">{rightAction}</div>
       </div>
 
-      {/* Mobile Nav (visible only on small screens) */}
       <div className="flex md:hidden justify-center space-x-6 pb-2">
         {navLinks.map((link) => (
           <button
@@ -62,3 +60,4 @@ export default function Navbar({ title = "BudgetBuddy", rightAction }) {
     </nav>
   );
 }
+
