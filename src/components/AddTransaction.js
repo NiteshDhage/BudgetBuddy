@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useBudget } from "../context/BudgetContext";
 
 export default function AddTransaction() {
-  const { addTransaction } = useBudget(); // context handles sync with JSONBin
+  const { addTransaction } = useBudget();
 
   const [form, setForm] = useState({
     desc: "",
@@ -28,7 +28,7 @@ export default function AddTransaction() {
       date: new Date().toISOString(),
     };
 
-    addTransaction(newTransaction); // This updates JSONBin via context
+    addTransaction(newTransaction); 
     setForm({ desc: "", amount: "", type: "expense", category: "" });
   };
 
@@ -79,3 +79,4 @@ export default function AddTransaction() {
     </form>
   );
 }
+
