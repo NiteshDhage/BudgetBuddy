@@ -23,7 +23,6 @@ export default function TransactionList({ transactions }) {
               : "border-red-400 bg-red-50"
           }`}
         >
-          {/* Left Section */}
           <div>
             <h3 className="font-semibold text-gray-800">{t.name}</h3>
             <p className="text-sm text-gray-500">
@@ -32,7 +31,6 @@ export default function TransactionList({ transactions }) {
             </p>
           </div>
 
-          {/* Right Section */}
           <div className="flex items-center gap-4">
             <span
               className={`font-semibold ${
@@ -54,3 +52,4 @@ export default function TransactionList({ transactions }) {
     </div>
   );
 }
+
